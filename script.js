@@ -57,8 +57,8 @@ function targetQue() {
 
 //Fill in the squares with colors according to the question
 var targetQue2 = targetQue();
-console.log(targetQue2);
-elementsColor = document.querySelectorAll(".square1");
+//console.log(targetQue2);
+var elementsColor = document.querySelectorAll(".square1");
 for (var i = 0; i < targetQue2.question.length; i++) {
   elementsColor[i].style.background = targetQue2.question[i];
 }
@@ -74,7 +74,7 @@ function addColor() {
   }
   return colorArr;
 }
-colors = addColor();
+var colors = addColor();
 //change colors after select
 function changeColors(color) {
   for (var i = 0; i < elements.length; i++) {
@@ -83,7 +83,7 @@ function changeColors(color) {
 }
 
 // Fill in the squares with  3 colors which have the right one and check the click
-elements = document.querySelectorAll(".square");
+var elements = document.querySelectorAll(".square");
 for (var i = 0; i < colors.length; i++) {
   elements[i].style.background = colors[i];
   elements[i].addEventListener("click", function () {
