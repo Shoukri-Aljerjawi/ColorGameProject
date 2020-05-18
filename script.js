@@ -16,17 +16,38 @@ var sheet = [
     question: ["gree", " red"],
     answer: "brown",
   },
+  {
+    question: ["white", " red"],
+    answer: "pink",
+  },
+  {
+    question: ["Black", " White"],
+    answer: "Gray",
+  },
+
+  {
+    question: ["Yellow", "purple"],
+    answer: "orange",
+  },
+  {
+    question: ["Green", "Yellow"],
+    answer: "greenyellow",
+  },
+  {
+    question: ["Green", "Blue"],
+    answer: " DarkGreen",
+  },
 ];
 
 // Select 3 questions random
-function ques(sheet, neededElements) {
+function ques() {
   var result = [];
-  for (var i = 0; i < neededElements; i++) {
+  for (var i = 0; i < 3; i++) {
     result.push(sheet[Math.floor(Math.random() * sheet.length)]);
   }
   return result;
 }
-var questions = ques(sheet, 3);
+var questions = ques();
 
 //Select 1 question random which need to answer
 function targetQue() {
@@ -36,6 +57,7 @@ function targetQue() {
 
 //Fill in the squares with colors according to the question
 var targetQue2 = targetQue();
+console.log(targetQue2);
 elementsColor = document.querySelectorAll(".square1");
 for (var i = 0; i < targetQue2.question.length; i++) {
   elementsColor[i].style.background = targetQue2.question[i];
@@ -53,6 +75,13 @@ function addColor() {
   return colorArr;
 }
 colors = addColor();
+//change colors after select
+function changeColors(color) {
+  for (var i = 0; i < elements.length; i++) {
+    elements[i].style.background = color;
+  }
+}
+
 // Fill in the squares with  3 colors which have the right one and check the click
 elements = document.querySelectorAll(".square");
 for (var i = 0; i < colors.length; i++) {
@@ -60,11 +89,18 @@ for (var i = 0; i < colors.length; i++) {
   elements[i].addEventListener("click", function () {
     var clickedColor = this.style.background;
     if (clickedColor === rightColor) {
-      alert("Right");
+      //alert("Right");
+      $("#message").text("Right Good job!!");
+      changeColors(clickedColor);
     } else {
       this.style.background = "#232323";
+      $("#message").text("Try Again !!");
     }
   });
 }
 
 $("#check").css("color", rightColor);
+
+$("#newgame").bind("click", function () {
+  location.reload();
+});

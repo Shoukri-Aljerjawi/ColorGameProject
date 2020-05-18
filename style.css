@@ -1,17 +1,37 @@
 body {
   background-color: #232323;
   margin: 0;
-  font-family: sans-serif;
-  font-weight: normal;
-  text-transform: uppercase;
 }
-h1 {
-  color: white;
-  line-height: 1.5;
-  text-align: center;
-  background-color: steelblue;
-  margin: 0;
-  padding: 20px 0;
+#head {
+  background-color: rgb(80, 214, 238);
+  border: 1px solid blue;
+  width: 100%;
+}
+
+.square1 {
+  width: 15%;
+  background: white;
+  padding-bottom: 15%;
+  float: right;
+  margin: 1.5%;
+  margin-top: 0 auto;
+  border-radius: 10%;
+}
+.bar {
+  background-color: white;
+  border: white;
+  width: 100%;
+  font-size: 20px;
+}
+#newGame {
+  float: left;
+  border: white;
+  width: 100%;
+  font-size: 20px;
+}
+#message {
+  font-size: 20px;
+  float: right;
 }
 
 .square {
@@ -19,16 +39,15 @@ h1 {
   background: white;
   padding-bottom: 30%;
   float: left;
-  margin: 1.66%;
+  margin: 1.5%;
   border-radius: 10%;
 }
 .square1 {
-  text-align: center;
-  width: 7%;
+  width: 15%;
   background: white;
-  padding-bottom: 7%;
-  float: left;
-  margin: 1.66%;
+  padding-bottom: 15%;
+  float: right;
+  margin: 1.5%;
   border-radius: 10%;
 }
 #stripe {
@@ -36,12 +55,4 @@ h1 {
   height: 30px;
   text-align: center;
   color: black;
-}
-
-#message {
-  display: inline-block;
-  width: 20%;
-}
-#container1 {
-  text-align: center;
 }
