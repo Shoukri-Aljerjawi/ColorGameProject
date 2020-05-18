@@ -13,7 +13,7 @@ var sheet = [
     answer: "green",
   },
   {
-    question: ["gree", " red"],
+    question: ["green", " red"],
     answer: "brown",
   },
   {
@@ -21,47 +21,65 @@ var sheet = [
     answer: "pink",
   },
   {
-    question: ["Black", " White"],
-    answer: "Gray",
+    question: ["black", " white"],
+    answer: "gray",
   },
 
   {
-    question: ["Yellow", "purple"],
-    answer: "orange",
-  },
-  {
-    question: ["Green", "Yellow"],
+    question: ["green", "yellow"],
     answer: "greenyellow",
   },
-  {
-    question: ["Green", "Blue"],
-    answer: " DarkGreen",
-  },
+  // {
+  //   question: ["green", "blue"],
+  //   answer: " darkgreen",
+  // },
 ];
 
 // Select 3 questions random
+// var uniqueRandoms = [];
+// var numRandoms = 5;
+// function makeUniqueRandom() {
+//   // refill the array if needed
+//   if (!uniqueRandoms.length) {
+//     for (var i = 0; i < numRandoms; i++) {
+//       uniqueRandoms.push(i);
+//     }
+//   }
+//   var index = Math.floor(Math.random() * uniqueRandoms.length);
+//   var val = uniqueRandoms[index];
+
+//   // now remove that value from the array
+//   uniqueRandoms.splice(index, 1);
+
+//   return val;
+// }
 function ques() {
   var result = [];
   for (var i = 0; i < 3; i++) {
-    result.push(sheet[Math.floor(Math.random() * sheet.length)]);
+    var index = Math.floor(Math.random() * sheet.length);
+    result.push(sheet[index]);
+    sheet.splice(index, 1);
   }
+
   return result;
 }
 var questions = ques();
 
 //Select 1 question random which need to answer
-function targetQue() {
-  var random = Math.floor(Math.random() * questions.length);
-  return questions[random];
-}
+// function targetQue() {
+//   var random = Math.floor(Math.random() * questions.length);
+//   return questions[random];
+// }
 
 //Fill in the squares with colors according to the question
-var targetQue2 = targetQue();
+var targetQue2 = questions[0];
 //console.log(targetQue2);
 var elementsColor = document.querySelectorAll(".square1");
-for (var i = 0; i < targetQue2.question.length; i++) {
-  elementsColor[i].style.background = targetQue2.question[i];
-}
+// for (var i = 0; i < targetQue2.question.length; i++) {
+//   elementsColor[i].style.background = targetQue2.question[i];
+// }
+elementsColor[0].style.background = targetQue2.question[0];
+elementsColor[1].style.background = targetQue2.question[1];
 rightColor = targetQue2.answer;
 
 console.log(rightColor);
@@ -81,11 +99,18 @@ function changeColors(color) {
     elements[i].style.background = color;
   }
 }
-
+console.log(colors);
 // Fill in the squares with  3 colors which have the right one and check the click
 var elements = document.querySelectorAll(".square");
 for (var i = 0; i < colors.length; i++) {
   elements[i].style.background = colors[i];
+  // if (
+  //   elements[0] == elements[1] ||
+  //   elements[0] == elements[2] ||
+  //   elements[2] == elements[3]
+  // ) {
+  //   location.reload();
+  // }
   elements[i].addEventListener("click", function () {
     var clickedColor = this.style.background;
     if (clickedColor === rightColor) {
@@ -98,8 +123,6 @@ for (var i = 0; i < colors.length; i++) {
     }
   });
 }
-
-$("#check").css("color", rightColor);
 
 $("#newgame").bind("click", function () {
   location.reload();
